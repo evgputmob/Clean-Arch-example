@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:breaking_bad_bloc_app/data/models/quote.dart';
 import 'package:equatable/equatable.dart';
+import '../=models=/quote.dart';
 import '../data/repository/characters_repository.dart';
 
 part 'quotes_state.dart';

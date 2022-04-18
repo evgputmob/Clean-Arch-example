@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../logic/quotes_cubit.dart';
 import '../app_theme.dart';
-import '../../data/models/character.dart';
+import '../../=models=/character.dart';
 import '../widgets/character_detail_screen/character_info_line.dart';
 import '../widgets/character_detail_screen/lines_divider.dart';
 import '../widgets/character_detail_screen/quotes_widget.dart';

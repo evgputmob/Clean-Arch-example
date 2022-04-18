@@ -1,6 +1,6 @@
 import '../i_breakingbad_service.dart';
-import '../../models/character.dart';
-import '../../models/quote.dart';
+import '../../../=models=/character.dart';
+import '../../../=models=/quote.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 

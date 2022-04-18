@@ -1,5 +1,5 @@
-import '../models/character.dart';
-import '../models/quote.dart';
+import '../../=models=/character.dart';
+import '../../=models=/quote.dart';
 
 abstract class IBreakingbadService {
   Future<List<Character>> fetchAllCharacters();

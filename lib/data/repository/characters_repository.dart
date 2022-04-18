@@ -1,5 +1,5 @@
-import '../models/character.dart';
-import '../models/quote.dart';
+import '../../=models=/character.dart';
+import '../../=models=/quote.dart';
 import '../services/i_breakingbad_service.dart';
 
 class CharactersRepository {

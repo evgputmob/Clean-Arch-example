@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../data/models/character.dart';
+import '../../=models=/character.dart';
 import '../data/repository/characters_repository.dart';
 
 part 'characters_state.dart';
