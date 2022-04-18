@@ -1,5 +1,4 @@
 import 'package:breaking_bad_bloc_app/logic/connectivity_cubit.dart';
-import 'data/repository/connectivity_repository.dart';
 import 'data/services/implementations/connectivity_service.dart';
 import 'logic/characters_cubit.dart';
 import 'logic/quotes_cubit.dart';
@@ -29,12 +28,6 @@ class MyApp extends StatelessWidget {
             //breakingbadService: GetIt.I<IBreakingbadService>(),
           ),
         ),
-        RepositoryProvider<ConnectivityRepository>(
-          create: (context) => ConnectivityRepository(
-            connectivityService: ConnectivityService(),
-            //connectivityService: GetIt.I<IConnectivityService>(),
-          ),
-        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -47,8 +40,8 @@ class MyApp extends StatelessWidget {
                 charactersRepository: context.read<CharactersRepository>()),
           ),
           BlocProvider(
-            create: (context) => ConnectivityCubit(
-                connectivityRepository: context.read<ConnectivityRepository>()),
+            create: (context) =>
+                ConnectivityCubit(connectivityService: ConnectivityService()),
           ),
         ],
         child: MaterialApp(
