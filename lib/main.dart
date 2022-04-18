@@ -1,15 +1,17 @@
-import 'package:get_it/get_it.dart';
-import 'cubits/characters_cubit.dart';
-import 'cubits/quotes_cubit.dart';
+import 'package:breaking_bad_bloc_app/logic/connectivity_cubit.dart';
+import 'data/repository/connectivity_repository.dart';
+import 'data/services/implementations/connectivity_service.dart';
+import 'logic/characters_cubit.dart';
+import 'logic/quotes_cubit.dart';
 import 'data/repository/characters_repository.dart';
 import 'data/services/implementations/breakingbad_service.dart';
-import 'data/services/breakingbad_service.dart';
 import 'ui/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  GetIt.I.registerSingleton<IBreakingbadService>(BreakingbadService());
+  //GetIt.I.registerSingleton<IBreakingbadService>(BreakingbadService());
+  //GetIt.I.registerSingleton<IConnectivityService>(ConnectivityService());
 
   runApp(const MyApp());
 }
@@ -19,8 +21,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => CharactersRepository(),
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider<CharactersRepository>(
+          create: (context) => CharactersRepository(
+            breakingbadService: BreakingbadService(),
+            //breakingbadService: GetIt.I<IBreakingbadService>(),
+          ),
+        ),
+        RepositoryProvider<ConnectivityRepository>(
+          create: (context) => ConnectivityRepository(
+            connectivityService: ConnectivityService(),
+            //connectivityService: GetIt.I<IConnectivityService>(),
+          ),
+        ),
+      ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
@@ -30,6 +45,10 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) => QuotesCubit(
                 charactersRepository: context.read<CharactersRepository>()),
+          ),
+          BlocProvider(
+            create: (context) => ConnectivityCubit(
+                connectivityRepository: context.read<ConnectivityRepository>()),
           ),
         ],
         child: MaterialApp(

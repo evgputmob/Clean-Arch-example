@@ -13,7 +13,7 @@ class NoInternetWidget extends StatelessWidget {
           children: [
             const SizedBox(height: 20),
             const Text(
-              'Can\'t connect .. check internet',
+              'Internet connection is lost',
               style: TextStyle(
                 fontSize: 22,
                 color: AppTheme.brbaDarkGrey,

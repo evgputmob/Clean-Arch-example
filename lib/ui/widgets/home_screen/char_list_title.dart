@@ -1,6 +1,6 @@
-import 'package:breaking_bad_bloc_app/cubits/characters_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../logic/characters_cubit.dart';
 import '../../app_theme.dart';
 
 class CharListTitle extends StatefulWidget {

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../app_theme.dart';
 import '../../../data/models/character.dart';
 import '../../screens/character_detail_screen.dart';
@@ -32,11 +33,12 @@ class CharacterGridItem extends StatelessWidget {
             child: Container(
               color: AppTheme.brbaDarkGrey,
               child: character.image.isNotEmpty
-                  ? FadeInImage.assetNetwork(
-                      width: double.infinity,
-                      height: double.infinity,
-                      placeholder: 'assets/images/loading.gif',
-                      image: character.image,
+                  ? CachedNetworkImage(
+                      imageUrl: character.image,
+                      placeholder: (context, url) =>
+                          const Center(child: CircularProgressIndicator()),
+                      errorWidget: (context, url, error) =>
+                          const Center(child: Icon(Icons.error)),
                       fit: BoxFit.cover,
                     )
                   : Image.asset('assets/images/placeholder.png'),

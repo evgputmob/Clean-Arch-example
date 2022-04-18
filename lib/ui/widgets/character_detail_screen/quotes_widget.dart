@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../cubits/quotes_cubit.dart';
+import '../../../logic/quotes_cubit.dart';
 
 class QuotesWidget extends StatelessWidget {
   final String charName;

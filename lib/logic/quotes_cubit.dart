@@ -21,8 +21,8 @@ class QuotesCubit extends Cubit<QuotesState> {
       _quotes =
           await _charactersRepository.getCharacterQuotes(charName: charName);
       emit(QuotesState(status: QuotesStatus.success, quotesList: _quotes));
-    } on Exception catch (exception) {
-      emit(QuotesState(status: QuotesStatus.failure, exception: exception));
+    } catch (e) {
+      emit(QuotesState(status: QuotesStatus.failure, exception: e.toString()));
     }
   }
 

@@ -21,9 +21,9 @@ class CharactersCubit extends Cubit<CharactersState> {
       _charsList = await _charactersRepository.getAllCharacters();
       emit(CharactersState(
           status: CharactersStatus.success, charactersList: _charsList));
-    } on Exception catch (exception) {
+    } catch (e) {
       emit(CharactersState(
-          status: CharactersStatus.failure, exception: exception));
+          status: CharactersStatus.failure, exception: e.toString()));
     }
   }
 
@@ -37,5 +37,11 @@ class CharactersCubit extends Cubit<CharactersState> {
 
     emit(CharactersState(
         status: CharactersStatus.success, charactersList: chList));
+  }
+
+  // getAllCharacters
+  Future<void> tryGetAllCharactersAgain() async {
+    _charsList = [];
+    getAllCharacters();
   }
 }

@@ -5,7 +5,7 @@ enum CharactersStatus { initial, loading, success, failure }
 class CharactersState extends Equatable {
   final CharactersStatus status;
   final List<Character> charactersList;
-  final Exception? exception;
+  final String? exception;
 
   const CharactersState({
     this.status = CharactersStatus.initial,

@@ -1,6 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../cubits/quotes_cubit.dart';
+import '../../logic/quotes_cubit.dart';
 import '../app_theme.dart';
 import '../../data/models/character.dart';
 import '../widgets/character_detail_screen/character_info_line.dart';
@@ -50,7 +51,14 @@ class CharacterDetailScreen extends StatelessWidget {
         ),
         background: Hero(
           tag: character.charId,
-          child: Image.network(character.image, fit: BoxFit.cover),
+          child: CachedNetworkImage(
+            imageUrl: character.image,
+            fit: BoxFit.cover,
+            placeholder: (context, url) =>
+                const Center(child: CircularProgressIndicator()),
+            errorWidget: (context, url, error) =>
+                const Center(child: Icon(Icons.error)),
+          ),
         ),
       ),
     );

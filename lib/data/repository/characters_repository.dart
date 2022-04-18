@@ -1,11 +1,12 @@
-import 'package:get_it/get_it.dart';
 import '../models/character.dart';
 import '../models/quote.dart';
-import '../services/breakingbad_service.dart';
+import '../services/i_breakingbad_service.dart';
 
 class CharactersRepository {
-  final IBreakingbadService _breakingbadService =
-      GetIt.I<IBreakingbadService>();
+  final IBreakingbadService _breakingbadService;
+
+  CharactersRepository({required IBreakingbadService breakingbadService})
+      : _breakingbadService = breakingbadService;
 
   Future<List<Character>> getAllCharacters() async {
     return await _breakingbadService.fetchAllCharacters();
